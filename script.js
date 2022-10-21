@@ -1,3 +1,22 @@
+const sound = document.querySelectorAll("audio");
+function muteSound() {
+  sound.muted = true
+}
+muteSound();
+const soundBtn = document.querySelector("#mute");
+console.log(soundBtn);
+soundBtn.addEventListener('click', () => {
+  if (sound.muted === true) {
+    sound.muted = false;
+  } if (sound.muted === false) {sound.muted = true;}
+})
+const soundBtn1 = document.querySelector("#mute1");
+console.log(soundBtn1);
+soundBtn1.addEventListener('click', () => {
+  if (sound.muted === true) {
+    sound.muted = false;
+  } if (sound.muted === false) {sound.muted = true;}
+})
 const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
 const canvas = document.getElementById("canvas");
@@ -30,8 +49,8 @@ const ball = {
   y: paddle.y - ballRadius,
   r: ballRadius,
   s: 2,
-  dx: 3,
-  dy: -3,
+  dx: 2,
+  dy: -2,
 };
 
 const end = function () {
@@ -46,6 +65,7 @@ function drawBall() {
   ctx.strokeStyle = "black";
   ctx.stroke();
   ctx.closePath();
+  
 }
 
 function ballWall() {
@@ -172,6 +192,8 @@ function ballPaddle() {
     // let collidePoint = ball.x - (paddle.x - paddle.w / 2);
     // ball.dx = ball.dx*-1;
     ball.dy = ball.dy * -1;
+  //   ball.x += ball.dx;
+  // ball.y += ball.dy;
     // ball.dx = -ball.dx;
     // ball.dy = ball.dx;
   }
