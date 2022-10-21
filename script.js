@@ -113,15 +113,15 @@ const bricks = {
 };
 let score = 0;
 let bricksArray = [];
-let x = 10;
-let y = 10;
-for (let j = 0; j < 7; j++) {
-  for (let i = 0; i < 10; i++) {
+let x = 25;
+let y = 25;
+for (let j = 0; j < 5; j++) {
+  for (let i = 0; i < 8; i++) {
     bricksArray.push({ x, y });
-    x += 110;
+    x += 120;
   }
-  y += 40;
-  x = 10;
+  y += 50;
+  x = 25;
 }
 function drawBricks() {
   bricksArray.forEach((brick, index) => {
