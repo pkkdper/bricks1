@@ -2,17 +2,14 @@
 <html>
   <head>
     <link rel="stylesheet" href="./styles.css" />
- 
   </head>
   <body>
-    <audio loop>
-      <source src="./Monkeys-Spinning-Monkeys.mp3" type="audio/ogg">
-    Your browser does not support the audio element.
+    <audio controls autoplay loop>
+      <source src="./Monkeys-Spinning-Monkeys.mp3" type="audio/ogg" />
+      Your browser does not support the audio element.
     </audio>
     <div class="start">
-      <button id="mute"
-    >Mute sound</button>
-
+      <button id="mute">Mute Sound</button>
 
       <div class="container">
         <p class="glitch">
@@ -22,25 +19,26 @@
         </p>
       </div>
       <div id="startGameBtnDiv">
-        <button class="startGameBtn" id ="startBtn">Start</button>
-    </div>
+        <button class="startGameBtn" id="startBtn">Start</button>
+      </div>
     </div>
     <div class="game">
-      <!-- <button class="mute"
-   >Mute sound</button> -->
-      <div class="score game-score">
-        Score:
-        <!-- <button id="endGameBtn">End Game</button> -->
+      <div class="game-text">
+        <div class="score game-score">
+          Score:
+        </div>
+        <div id="lives">Lives:</div>
       </div>
-      <div id = "lives">Lives:</div><canvas id="canvas" width=1000 height=800></canvas>
-      
+      <canvas id="canvas" width="1000" height="800"></canvas>
     </div>
     <div class="end">
-      <button id="mute1"
-   >Mute sound</button>
-      <div class="score end-score">Your score is:</div>
-      <p>Want to try again?</p>
-      <button class="startGameBtn" id ="restartBtn">Play Again</button>
-    </div><script src="./script.js"></script>
-  </body>   
+      <button id="mute1">Mute Sound</button>
+      <div class="end-text">
+        <div class="score end-score">Your score is:</div>
+        <p>Want to try again?</p>
+      </div>
+      <button class="startGameBtn" id="restartBtn">Play Again</button>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

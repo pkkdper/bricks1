@@ -1,22 +1,30 @@
-const sound = document.querySelectorAll("audio");
-function muteSound() {
-  sound.muted = true
-}
-muteSound();
+const sound = document.querySelector("audio");
+console.log(sound);
 const soundBtn = document.querySelector("#mute");
-console.log(soundBtn);
-soundBtn.addEventListener('click', () => {
-  if (sound.muted === true) {
-    sound.muted = false;
-  } if (sound.muted === false) {sound.muted = true;}
-})
 const soundBtn1 = document.querySelector("#mute1");
-console.log(soundBtn1);
-soundBtn1.addEventListener('click', () => {
-  if (sound.muted === true) {
-    sound.muted = false;
-  } if (sound.muted === false) {sound.muted = true;}
-})
+
+console.log(soundBtn);
+const audio = new Audio("./Monkeys-Spinning-Monkeys.mp3");
+soundBtn.addEventListener("click", () => {
+  console.log(soundBtn.innerText);
+  if (soundBtn.innerText === "Mute Sound") {
+    soundBtn.innerText = "Play Sound";
+    audio.pause();
+  } else {
+    audio.play();
+    soundBtn.innerText = "Mute Sound";
+  }
+});
+soundBtn1.addEventListener("click", () => {
+  console.log(soundBtn1.innerText);
+  if (soundBtn1.innerText === "Mute Sound") {
+    soundBtn1.innerText = "Play Sound";
+    audio.pause();
+  } else {
+    audio.play();
+    soundBtn1.innerText = "Mute Sound";
+  }
+});
 const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
 const canvas = document.getElementById("canvas");
@@ -65,7 +73,6 @@ function drawBall() {
   ctx.strokeStyle = "black";
   ctx.stroke();
   ctx.closePath();
-  
 }
 
 function ballWall() {
@@ -74,7 +81,8 @@ function ballWall() {
   }
   if (ball.y < 0) {
     ball.dy = -ball.dy;
-  }document.getElementById('lives').textContent=`Lives:${life}`;
+  }
+  document.getElementById("lives").textContent = `Lives:${life}`;
 
   if (ball.y + ball.r > canvas.height) {
     life--;
@@ -88,7 +96,7 @@ function ballWall() {
 
 function resetBall() {
   // ball.x = canvas.width / 2;
-  ball.x = paddle.x + (ballRadius*4);
+  ball.x = paddle.x + ballRadius * 4;
   ball.y = paddle.y - ballRadius;
   ball.dx = 3 * (Math.random() * 2 - 1);
   ball.dy = -3;
@@ -119,20 +127,23 @@ function drawBricks() {
   bricksArray.forEach((brick, index) => {
     ctx.fillRect(brick.x, brick.y, 80, 20);
     if (
-      brick.y + 20 > ball.y - ball.r&&
-      brick.x < ball.x +ball.r&&
-      brick.x + 80 > ball.x - ball.r&&
+      brick.y + 20 > ball.y - ball.r &&
+      brick.x < ball.x + ball.r &&
+      brick.x + 80 > ball.x - ball.r &&
       brick.y < ball.y + ball.y
     ) {
       ball.dy = -ball.dy;
       bricksArray.splice(index, 1);
       score += 10;
-      document.querySelector(".game-score").textContent=`Score:${score}`;
-      document.querySelector(".end-score").textContent=`Your score is:${score}`
+      document.querySelector(".game-score").textContent = `Score:${score}`;
+      document.querySelector(
+        ".end-score"
+      ).textContent = `Your score is:${score}`;
       console.log(score);
-    }if (score === 700) {
-      nextLevel = true
-}
+    }
+    if (score === 700) {
+      nextLevel = true;
+    }
   });
 }
 
@@ -192,8 +203,8 @@ function ballPaddle() {
     // let collidePoint = ball.x - (paddle.x - paddle.w / 2);
     // ball.dx = ball.dx*-1;
     ball.dy = ball.dy * -1;
-  //   ball.x += ball.dx;
-  // ball.y += ball.dy;
+    //   ball.x += ball.dx;
+    // ball.y += ball.dy;
     // ball.dx = -ball.dx;
     // ball.dy = ball.dx;
   }
@@ -215,7 +226,7 @@ function start() {
   update();
   if (isGameOver) {
     cancelAnimationFrame(gameId);
-    end()
+    end();
   } else {
     gameId = requestAnimationFrame(start);
   }
@@ -229,10 +240,10 @@ restartBtn.addEventListener("click", () => {
   document.querySelector(".end").style.display = "none";
   isGameOver = false;
   score = 0;
- bricksArray = [];
-y = 10;
-x = 10;
-life = 3;
+  bricksArray = [];
+  y = 10;
+  x = 10;
+  life = 3;
   for (let j = 0; j < 7; j++) {
     for (let i = 0; i < 10; i++) {
       bricksArray.push({ x, y });
